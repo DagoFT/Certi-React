@@ -1,0 +1,27 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check:js":"eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DagoFT/Certi-React.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DagoFT/Certi-React/issues"
+  },
+  "homepage": "https://github.com/DagoFT/Certi-React#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.1",
+    "globals": "^17.11.0"
+  }
+}
