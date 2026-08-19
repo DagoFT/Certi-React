@@ -17,3 +17,6 @@ jobs:
         run: pwd
       - name: Listado de archivos
         run: ls -la
+      - name: Instalar code
+        uses: actions/setup-node@v4
+       
