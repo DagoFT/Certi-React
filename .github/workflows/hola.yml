@@ -23,4 +23,8 @@ jobs:
         run: node --version 
       - name: Verificar npm
         run: npm --version
+      - name: Install ci
+        run: npm ci
+      - name: Check js
+        run: npm run check:js
        
