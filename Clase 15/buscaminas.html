@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscaminas</title>
+
+    <style>
+        button {
+            width: 100px;
+            height: 100px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Buscaminas</h1>
+
+    <button onclick="presionar(0)">?</button>
+    <button onclick="presionar(1)">?</button>
+    <button onclick="presionar(2)">?</button>
+    <br>
+
+    <button onclick="presionar(3)">?</button>
+    <button onclick="presionar(4)">?</button>
+    <button onclick="presionar(5)">?</button>
+    <br>
+
+    <button onclick="presionar(6)">?</button>
+    <button onclick="presionar(7)">?</button>
+    <button onclick="presionar(8)">?</button>
+
+    <script>
+
+        let bomba = 0;
+
+        function presionar(posicion) {
+
+            let botones = document.querySelectorAll("button");
+
+            if (posicion == bomba) {
+
+                for (let i = 0; i < botones.length; i++) {
+                    botones[i].innerHTML = "X";
+                }
+
+            } else {
+
+                botones[bomba].innerHTML = "💣";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
