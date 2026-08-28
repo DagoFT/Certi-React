@@ -9,7 +9,7 @@ export default function Contador() {
     }
 
     return (
-        <button onClick={() => setContador(contador + 1)}>
+        <button onClick={contar}>
             {contador}
         </button>
     )
