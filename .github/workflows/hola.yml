@@ -34,7 +34,18 @@ jobs:
         run: npm ci
 
       - name: Check TypeScript
-        run: npx tsc --noEmit
+        run: npx tsc -p tsconfig.json --noEmit
 
       - name: Guardar resultado
         run: npx vite build
+
+      - name: Configurar Github Pages
+        run: actions/configure-pages@v5
+
+      - name: Subir resultado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Publicar aplicación
+        uses: actions/deploy-pages@v4
