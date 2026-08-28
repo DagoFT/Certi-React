@@ -26,11 +26,10 @@ jobs:
       - name: Listado de archivos
         run: ls -la
 
-      - name: Instalar code
+      - name: Instalar Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
       - name: Verificar node
         run: node --version
@@ -39,10 +38,12 @@ jobs:
         run: npm --version
 
       - name: Install ci
+        working-directory: ./Clase 17/tres-en-raya
         run: npm ci
 
       - name: Guardar resultado
-        run: npx vite build
+        working-directory: ./Clase 17/tres-en-raya
+        run: npm run build
 
       - name: Configurar Github Pages
         uses: actions/configure-pages@v5
@@ -50,7 +51,7 @@ jobs:
       - name: Subir resultado
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./Clase 17/tres-en-raya/dist
 
       - name: Publicar aplicación
         uses: actions/deploy-pages@v4
