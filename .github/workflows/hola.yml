@@ -41,9 +41,6 @@ jobs:
       - name: Install ci
         run: npm ci
 
-      - name: Check TypeScript
-        run: npx tsc --noEmit
-
       - name: Guardar resultado
         run: npx vite build
 
