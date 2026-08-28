@@ -30,6 +30,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Verificar node
         run: node --version
@@ -38,15 +39,12 @@ jobs:
         run: npm --version
 
       - name: Install ci
-        working-directory: ./contador
         run: npm ci
 
       - name: Check TypeScript
-        working-directory: ./contador
-        run: npx tsc -p tsconfig.json --noEmit
+        run: npx tsc --noEmit
 
       - name: Guardar resultado
-        working-directory: ./contador
         run: npx vite build
 
       - name: Configurar Github Pages
@@ -55,7 +53,7 @@ jobs:
       - name: Subir resultado
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./contador/dist
+          path: ./dist
 
       - name: Publicar aplicación
         uses: actions/deploy-pages@v4
