@@ -37,14 +37,6 @@ jobs:
       - name: Verificar npm
         run: npm --version
 
-      - name: Install ci
-        working-directory: ./Clase 17/tres-en-raya
-        run: npm ci
-
-      - name: Guardar resultado
-        working-directory: ./Clase 17/tres-en-raya
-        run: npm run build
-
       - name: Configurar Github Pages
         uses: actions/configure-pages@v5
 
@@ -55,3 +47,5 @@ jobs:
 
       - name: Publicar aplicación
         uses: actions/deploy-pages@v4
+
+        
