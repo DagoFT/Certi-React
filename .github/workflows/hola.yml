@@ -4,6 +4,11 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   hola:
     runs-on: ubuntu-latest
@@ -23,6 +28,8 @@ jobs:
 
       - name: Instalar code
         uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - name: Verificar node
         run: node --version
@@ -31,21 +38,24 @@ jobs:
         run: npm --version
 
       - name: Install ci
+        working-directory: ./contador
         run: npm ci
 
       - name: Check TypeScript
+        working-directory: ./contador
         run: npx tsc -p tsconfig.json --noEmit
 
       - name: Guardar resultado
+        working-directory: ./contador
         run: npx vite build
 
       - name: Configurar Github Pages
-        run: actions/configure-pages@v5
+        uses: actions/configure-pages@v5
 
       - name: Subir resultado
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./contador/dist
 
       - name: Publicar aplicación
         uses: actions/deploy-pages@v4
