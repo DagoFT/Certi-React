@@ -40,12 +40,7 @@ jobs:
       - name: Configurar Github Pages
         uses: actions/configure-pages@v5
 
-      - name: Subir resultado
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./Clase 17/tres-en-raya/dist
-
-      - name: Publicar aplicación
+      - name: Publicar 
         uses: actions/deploy-pages@v4
 
         
