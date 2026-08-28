@@ -4,6 +4,11 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   hola:
     runs-on: ubuntu-latest
@@ -23,6 +28,9 @@ jobs:
 
       - name: Instalar code
         uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
       - name: Verificar node
         run: node --version
@@ -38,3 +46,14 @@ jobs:
 
       - name: Guardar resultado
         run: npx vite build
+
+      - name: Configurar Github Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir resultado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Publicar aplicación
+        uses: actions/deploy-pages@v4
