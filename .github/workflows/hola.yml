@@ -11,20 +11,30 @@ jobs:
     steps:
       - name: Saludar
         run: echo "Hello World!"
+
       - name: Descargar Codigo
         uses: actions/checkout@v4
+
       - name: En que carpeta estoy
         run: pwd
+
       - name: Listado de archivos
         run: ls -la
+
       - name: Instalar code
         uses: actions/setup-node@v4
+
       - name: Verificar node
-        run: node --version 
+        run: node --version
+
       - name: Verificar npm
         run: npm --version
+
       - name: Install ci
         run: npm ci
-      - name: Check js
-        run: npm run check:js
-       
+
+      - name: Check TypeScript
+        run: npx tsc --noEmit
+
+      - name: Guardar resultado
+        run: npx vite build
