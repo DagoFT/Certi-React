@@ -1,4 +1,4 @@
-name: Hola Mundo
+name: Publicar SerpientePorTurnos
 
 on:
   push:
@@ -10,13 +10,10 @@ permissions:
   id-token: write
 
 jobs:
-  hola:
+  serpiente:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Saludar
-        run: echo "Hello World!"
-
       - name: Descargar Codigo
         uses: actions/checkout@v4
 
@@ -38,20 +35,21 @@ jobs:
         run: npm --version
 
       - name: Instalar dependencias
-        working-directory: ./Clase 18/contador
+        working-directory: ./SerpientePorTurnos
         run: npm ci
 
       - name: Crear build
-        working-directory: ./Clase 18/contador
+        working-directory: ./SerpientePorTurnos
         run: npm run build
 
       - name: Configurar Github Pages
         uses: actions/configure-pages@v5
 
       - name: Subir resultado
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: ./Clase 18/contador/dist
+          path: ./SerpientePorTurnos/dist
 
       - name: Publicar
+        id: deployment
         uses: actions/deploy-pages@v4
