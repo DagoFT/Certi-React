@@ -15,7 +15,7 @@ const serpienteInicial = [
 
 export default function SerpientePorTurnos() {
     const [serpiente, setSerpiente] = useState(serpienteInicial)
-    const [comida, setComida] = useState([5, 5])
+    const [comida, setComida] = useState([6, 6])
     const [juegoTerminado, setJuegoTerminado] = useState(false)
 
     const mover = (event: KeyboardEvent<HTMLDivElement>) => {
