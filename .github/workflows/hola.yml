@@ -35,11 +35,11 @@ jobs:
         run: npm --version
 
       - name: Instalar dependencias
-        working-directory: ./SerpientePorTurnos
+        working-directory: ./Parcial 2/SerpientePorTurnos
         run: npm ci
 
       - name: Crear build
-        working-directory: ./SerpientePorTurnos
+        working-directory: ./Parcial 2/SerpientePorTurnos
         run: npm run build
 
       - name: Configurar Github Pages
@@ -48,7 +48,7 @@ jobs:
       - name: Subir resultado
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./SerpientePorTurnos/dist
+          path: ./Parcial 2/SerpientePorTurnos/dist
 
       - name: Publicar
         id: deployment
