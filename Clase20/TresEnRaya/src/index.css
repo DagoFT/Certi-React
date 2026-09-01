@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+}
+
+.tablero {
+    border-collapse: collapse;
+}
+
+.tablero tr {
+    display: table-row;
+}
+
+.tablero td {
+    display: table-cell;
+    padding: 0;
+}
+
+.tablero button {
+    display: block;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    margin: 0;
+    border: 2px solid white;
+    background-color: #333;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.tablero button:hover {
+    background-color: #444;
+}
