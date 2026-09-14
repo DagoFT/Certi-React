@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+h1 {
+    letter-spacing: 6px;
+}
+
+.info {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.info p {
+    margin: 6px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 70px);
+    grid-template-rows: repeat(6, 70px);
+    border: 3px solid white;
+}
+
+.cell {
+    width: 70px;
+    height: 70px;
+    box-sizing: border-box;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background: #1b1b1b;
+}
+
+.controls button {
+    min-width: 60px;
+    min-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    background: #1b1b1b;
+    color: #00e5ff;
+    border: 2px solid #00e5ff;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.controls button:hover {
+    background: #00e5ff;
+    color: #111;
+}
+
+.controls button:active {
+    background: #00a9bd;
+    color: white;
+}
+.message {
+    min-height: 24px;
+    font-size: 18px;
+}
+
+main > button {
+    min-width: 150px;
+    min-height: 45px;
+    font-size: 18px;
+    cursor: pointer;
+    background: #1b1b1b;
+    color: #a855f7;
+    border: 2px solid #a855f7;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+main > button:hover {
+    background: #a855f7;
+    color: #111;
+}
+
+main > button:active {
+    background: #7e22ce;
+    color: white;
+}

@@ -1,10 +1,10 @@
-import { createRoot } from "react-dom/client";
+import "./App.css";
 import TresEnRaya from "./TresEnRaya.jsx";
 
-console.log(createRoot);
+function App() {
+    return (
+        <TresEnRaya />
+    )
+}
 
-const contenedor = document.querySelector("#root");
-
-const root = createRoot(contenedor);
-
-root.render(<TresEnRaya />);
+export default App;
