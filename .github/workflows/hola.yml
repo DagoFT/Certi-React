@@ -1,55 +1,56 @@
-name: Publicar SerpientePorTurnos
+name: Publicar Neon Salvage
 
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
-  serpiente:
+  publicar:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Descargar Codigo
+      - name: Descargar codigo
         uses: actions/checkout@v4
-
-      - name: En que carpeta estoy
-        run: pwd
-
-      - name: Listado de archivos
-        run: ls -la
 
       - name: Instalar Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Verificar node
+      - name: Verificar Node
         run: node --version
 
       - name: Verificar npm
         run: npm --version
 
-      - name: Instalar dependencias
-        working-directory: ./Parcial 2/SerpientePorTurnos
+      - name: Instalar dependencias del frontend
+        working-directory: ./Proyecto final/frontend
         run: npm ci
 
-      - name: Crear build
-        working-directory: ./Parcial 2/SerpientePorTurnos
+      - name: Crear build del frontend
+        working-directory: ./Proyecto final/frontend
         run: npm run build
 
-      - name: Configurar Github Pages
-        uses: actions/configure-pages@v5
+      - name: Instalar dependencias del backend
+        working-directory: ./Proyecto final/backend
+        run: npm ci
 
-      - name: Subir resultado
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./Parcial 2/SerpientePorTurnos/dist
+      - name: Crear build del backend
+        working-directory: ./Proyecto final/backend
+        run: npm run build
 
-      - name: Publicar
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Verificar archivos generados
+        run: |
+          echo "Frontend:"
+          ls -la "./Proyecto final/frontend/dist"
+          echo "Backend:"
+          ls -la "./Proyecto final/backend/dist"
+
+      - name: Publicar en Render
+        if: success()
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
