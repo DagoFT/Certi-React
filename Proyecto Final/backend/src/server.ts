@@ -1,4 +1,6 @@
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import {
     decideAIAction,
     type AIAction,
@@ -7,7 +9,10 @@ import {
 } from "./ai.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 
@@ -116,16 +121,12 @@ function createGame(): Game {
         status: "playing",
         turn: 1,
         maxTurns: MAX_TURNS,
-
         player: playerData,
-
         ai: aiData,
-
         crystals: createCrystals(
             playerData,
             aiData,
         ),
-
         message: "La partida comenzó.",
     };
 }
@@ -392,8 +393,22 @@ app.post("/api/games/:id/action", (request, response) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(
-        `Neon Salvage API ejecutándose en http://localhost:${PORT}`,
+const frontendPath = path.resolve(
+    __dirname,
+    "../../frontend/dist",
+);
+
+app.use(express.static(frontendPath));
+
+app.get("*", (_request, response) => {
+    response.sendFile(
+        path.join(frontendPath, "index.html"),
     );
 });
+
+app.listen(PORT, () => {
+    console.log(
+        `Neon Salvage ejecutándose en el puerto ${PORT}`,
+    );
+});
+```
