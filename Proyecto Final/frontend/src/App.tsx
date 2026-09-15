@@ -99,7 +99,11 @@ function App() {
     }
 
     useEffect(() => {
-        void createGame();
+        const startGame = async () => {
+            await createGame();
+        };
+
+        void startGame();
     }, []);
 
     if (loading || !game) {
@@ -225,3 +229,4 @@ function App() {
 }
 
 export default App;
+
