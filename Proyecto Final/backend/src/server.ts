@@ -44,7 +44,7 @@ const games = new Map<string, Game>();
 
 const WIDTH = 8;
 const HEIGHT = 6;
-const MAX_TURNS = 15;
+const MAX_TURNS = 16;
 
 function randomPosition(): { x: number; y: number } {
     return {
