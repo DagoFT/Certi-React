@@ -55,7 +55,7 @@ jobs:
         if: success()
         run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
 
-    e2e:
+  e2e:
     runs-on: ubuntu-latest
 
     steps:
