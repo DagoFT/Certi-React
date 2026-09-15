@@ -258,7 +258,7 @@ function checkGameOver(game: Game): void {
         return;
     }
 
-    if (game.turn > game.maxTurns) {
+    if (game.turn >= game.maxTurns) {
         if (game.player.score > game.ai.score) {
             game.status = "player_won";
             game.message = "Ganaste por puntuación.";
@@ -399,7 +399,9 @@ app.post("/api/games/:id/action", (request, response) => {
         game.message = "La IA se movió.";
     }
 
-    game.turn++;
+    if (game.turn < game.maxTurns) {
+        game.turn++;
+    }
 
     checkGameOver(game);
 
