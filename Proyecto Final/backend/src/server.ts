@@ -159,6 +159,14 @@ function movePlayer(
         return false;
     }
 
+    const occupiedByAI =
+        game.ai.x === x &&
+        game.ai.y === y;
+
+    if (occupiedByAI) {
+        return false;
+    }
+
     game.player.x = x;
     game.player.y = y;
 
@@ -190,6 +198,14 @@ function moveAI(
     if (direction === "right") x++;
 
     if (!isInsideMap(x, y)) {
+        return;
+    }
+
+    const occupiedByPlayer =
+        game.player.x === x &&
+        game.player.y === y;
+
+    if (occupiedByPlayer) {
         return;
     }
 
@@ -326,7 +342,8 @@ app.post("/api/games/:id/action", (request, response) => {
 
         if (!moved) {
             return response.status(400).json({
-                mensaje: "No puedes salir del mapa",
+                mensaje:
+                    "Movimiento inválido: la casilla está ocupada o fuera del mapa",
             });
         }
 
@@ -417,4 +434,3 @@ app.listen(PORT, () => {
         `Neon Salvage ejecutándose en el puerto ${PORT}`,
     );
 });
-
