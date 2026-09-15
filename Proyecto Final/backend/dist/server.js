@@ -10,7 +10,7 @@ app.use(express.json());
 const games = new Map();
 const WIDTH = 8;
 const HEIGHT = 6;
-const MAX_TURNS = 15;
+const MAX_TURNS = 16;
 function randomPosition() {
     return {
         x: Math.floor(Math.random() * WIDTH),
@@ -256,7 +256,10 @@ app.post("/api/games/:id/action", (request, response) => {
 });
 const frontendPath = path.resolve(__dirname, "../../frontend/dist");
 app.use(express.static(frontendPath));
-app.get("*", (_request, response) => {
+app.get("/", (_request, response) => {
+    response.sendFile(path.join(frontendPath, "index.html"));
+});
+app.get("/{*splat}", (_request, response) => {
     response.sendFile(path.join(frontendPath, "index.html"));
 });
 app.listen(PORT, () => {
