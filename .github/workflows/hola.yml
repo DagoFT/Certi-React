@@ -54,3 +54,24 @@ jobs:
       - name: Publicar en Render
         if: success()
         run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+
+  e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Instalar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalar dependencias de Playwright
+        run: npm install
+
+      - name: Instalar navegador Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Ejecutar pruebas E2E
+        run: npm run test:e2e
