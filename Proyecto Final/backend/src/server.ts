@@ -400,8 +400,16 @@ const frontendPath = path.resolve(
 
 app.use(express.static(frontendPath));
 
+app.get("/", (_request, response) => {
+    response.sendFile(
+        path.join(frontendPath, "index.html"),
+    );
+});
+
 app.get("/{*splat}", (_request, response) => {
-    response.sendFile(path.join(frontendPath, "index.html"));
+    response.sendFile(
+        path.join(frontendPath, "index.html"),
+    );
 });
 
 app.listen(PORT, () => {
