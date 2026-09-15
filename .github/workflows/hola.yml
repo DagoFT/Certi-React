@@ -32,6 +32,10 @@ jobs:
         working-directory: ./Proyecto Final/frontend
         run: npm ci
 
+      - name: Ejecutar lint del frontend
+        working-directory: ./Proyecto Final/frontend
+        run: npm run lint
+
       - name: Crear build del frontend
         working-directory: ./Proyecto Final/frontend
         run: npm run build
@@ -39,6 +43,10 @@ jobs:
       - name: Instalar dependencias del backend
         working-directory: ./Proyecto Final/backend
         run: npm ci
+
+      - name: Ejecutar lint del backend
+        working-directory: ./Proyecto Final/backend
+        run: npm run lint
 
       - name: Crear build del backend
         working-directory: ./Proyecto Final/backend
@@ -78,3 +86,4 @@ jobs:
       - name: Ejecutar pruebas E2E
         working-directory: ./Proyecto Final
         run: npm run test:e2e
+
