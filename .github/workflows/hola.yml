@@ -29,27 +29,27 @@ jobs:
         run: npm --version
 
       - name: Instalar dependencias del frontend
-        working-directory: ./Proyecto final/frontend
+        working-directory: ./Proyecto Final/frontend
         run: npm ci
 
       - name: Crear build del frontend
-        working-directory: ./Proyecto final/frontend
+        working-directory: ./Proyecto Final/frontend
         run: npm run build
 
       - name: Instalar dependencias del backend
-        working-directory: ./Proyecto final/backend
+        working-directory: ./Proyecto Final/backend
         run: npm ci
 
       - name: Crear build del backend
-        working-directory: ./Proyecto final/backend
+        working-directory: ./Proyecto Final/backend
         run: npm run build
 
       - name: Verificar archivos generados
         run: |
           echo "Frontend:"
-          ls -la "./Proyecto final/frontend/dist"
+          ls -la "./Proyecto Final/frontend/dist"
           echo "Backend:"
-          ls -la "./Proyecto final/backend/dist"
+          ls -la "./Proyecto Final/backend/dist"
 
       - name: Publicar en Render
         if: success()
