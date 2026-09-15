@@ -68,10 +68,13 @@ jobs:
           node-version: 22
 
       - name: Instalar dependencias de Playwright
+        working-directory: ./Proyecto Final
         run: npm install
 
       - name: Instalar navegador Chromium
+        working-directory: ./Proyecto Final
         run: npx playwright install --with-deps chromium
 
-      - name: Ejecutar pruebas e2e
+      - name: Ejecutar pruebas E2E
+        working-directory: ./Proyecto Final
         run: npm run test:e2e
