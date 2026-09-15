@@ -21,6 +21,7 @@
   "homepage": "https://github.com/DagoFT/Certi-React#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
     "eslint": "^10.8.1",
     "globals": "^17.11.0",
     "typescript": "^7.0.2"
