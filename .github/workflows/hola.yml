@@ -1,3 +1,4 @@
+```yaml
 name: Publicar Neon Salvage
 
 on:
@@ -32,10 +33,6 @@ jobs:
         working-directory: ./Proyecto Final/frontend
         run: npm ci
 
-      - name: Ejecutar lint del frontend
-        working-directory: ./Proyecto Final/frontend
-        run: npm run lint
-
       - name: Crear build del frontend
         working-directory: ./Proyecto Final/frontend
         run: npm run build
@@ -43,10 +40,6 @@ jobs:
       - name: Instalar dependencias del backend
         working-directory: ./Proyecto Final/backend
         run: npm ci
-
-      - name: Ejecutar lint del backend
-        working-directory: ./Proyecto Final/backend
-        run: npm run lint
 
       - name: Crear build del backend
         working-directory: ./Proyecto Final/backend
@@ -62,6 +55,34 @@ jobs:
       - name: Publicar en Render
         if: success()
         run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Instalar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instalar dependencias del frontend
+        working-directory: ./Proyecto Final/frontend
+        run: npm ci
+
+      - name: Ejecutar lint del frontend
+        working-directory: ./Proyecto Final/frontend
+        run: npm run lint
+
+      - name: Instalar dependencias del backend
+        working-directory: ./Proyecto Final/backend
+        run: npm ci
+
+      - name: Ejecutar lint del backend
+        working-directory: ./Proyecto Final/backend
+        run: npm run lint
 
   e2e:
     runs-on: ubuntu-latest
@@ -86,4 +107,4 @@ jobs:
       - name: Ejecutar pruebas E2E
         working-directory: ./Proyecto Final
         run: npm run test:e2e
-
+```
