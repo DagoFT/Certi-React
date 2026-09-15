@@ -93,5 +93,9 @@ main > button:hover {
 
 main > button:active {
     background: #7e22ce;
-    color: white;
+    color: rgb(250, 247, 247);
 }
+
+
+
+
