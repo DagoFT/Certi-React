@@ -73,5 +73,5 @@ jobs:
       - name: Instalar navegador Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Ejecutar pruebas E2E
+      - name: Ejecutar pruebas e2e
         run: npm run test:e2e
