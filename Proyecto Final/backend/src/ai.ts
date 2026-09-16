@@ -41,14 +41,14 @@ export function decideAIAction(
     player: Position,
     crystals: Crystal[],
 ): AIAction {
-    // Si el jugador está al lado, atacar.
+    
     if (distance(ai, player) <= 1) {
         return {
             type: "attack",
         };
     }
 
-    // Si existen cristales, buscar el más cercano.
+    
     if (crystals.length > 0) {
         let closest = crystals[0];
         let closestDistance = distance(ai, closest);
@@ -68,7 +68,7 @@ export function decideAIAction(
         };
     }
 
-    // Si no hay cristales, movimiento aleatorio.
+    
     const direction =
         directions[Math.floor(Math.random() * directions.length)];
 

@@ -16,6 +16,7 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 
+ 
 type GameStatus =
     | "playing"
     | "player_won"
@@ -435,4 +436,4 @@ app.listen(PORT, () => {
     console.log(
         `Neon Salvage ejecutándose en el puerto ${PORT}`,
     );
-});
+}); 

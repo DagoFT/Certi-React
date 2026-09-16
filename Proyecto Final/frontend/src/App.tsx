@@ -112,7 +112,7 @@ function App() {
 
     return (
         <main>
-            <h1>NEON SALVAGE</h1>
+            <h1>NEON</h1>
 
             <section className="info">
                 <div>
